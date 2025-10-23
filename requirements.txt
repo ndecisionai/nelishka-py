@@ -1,0 +1,7 @@
+typer[all]==0.20.0
+rich==14.2.0
+PyYAML==6.0.3
+pytest==7.4.2
+prompt_toolkit==3.0.52
+black==25.9.0
+setuptools>=65.0.0

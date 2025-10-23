@@ -1,0 +1,16 @@
+project:
+  name: nelishka
+  version: 0.1.0
+
+paths:
+  data_dir: ./data
+  models_dir: ./models
+  logs_dir: ./logs
+
+langgraph:
+  default_graph: agent_flow
+  auto_visualize: true
+
+rich_cli:
+  theme: "dracula"
+  verbose: true
