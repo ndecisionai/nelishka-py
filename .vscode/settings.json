@@ -1,15 +1,19 @@
 {
   "cSpell.words": [
     "Agentic",
+    "FAISS",
     "ingestor",
     "interpretability",
+    "langchain",
     "langgraph",
     "multimodal",
     "nelishka",
     "persistor",
     "pytest",
     "setuptools",
-    "typer"
+    "typer",
+    "vectorstore",
+    "vectorstores"
   ],
   "python.formatting.provider": "black",
   "editor.formatOnSave": true,

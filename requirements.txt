@@ -5,3 +5,8 @@ pytest==7.4.2
 prompt_toolkit==3.0.52
 black==25.9.0
 setuptools>=65.0.0
+langgraph>=1.0
+langchain>=1.0
+langchain-anthropic
+IPython
+gpt4all
