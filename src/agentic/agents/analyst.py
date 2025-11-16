@@ -1,5 +1,5 @@
 from typing import Dict
-from agentic.types import AgentState
+from agentic.agent_types import AgentState
 from agentic.config_models import AgentConfig
 from agentic.tool_protocol import ToolCallable
 

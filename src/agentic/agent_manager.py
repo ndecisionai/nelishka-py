@@ -3,10 +3,10 @@ from typing import Dict, Optional, List, Callable, cast
 
 from utils.config_loader import ConfigType, make_config_path, load_config
 
-from .config_models import AgentConfig, ToolConfig
-from .types import AgentState
-from .tool_protocol import ToolCallable
-from .agent_protocol import AgentCallable
+from agentic.config_models import AgentConfig, ToolConfig
+from agentic.agent_types import AgentState
+from agentic.tool_protocol import ToolCallable
+from agentic.agent_protocol import AgentCallable
 
 class AgentManager:
 
