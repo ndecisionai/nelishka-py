@@ -2,6 +2,8 @@
 
 This document describes the overall architecture of the project, the major components in `src/`, the configuration-driven architecture (Agents, Tools, Graphs), and the execution flow when running the CLI or the workflow engine.
 
+![Architecture Overview](assets/folder_structure.png)
+
 ---
 
 # **1. High-Level System Architecture**
