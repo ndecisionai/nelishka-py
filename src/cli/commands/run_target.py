@@ -44,6 +44,8 @@ Dependencies:
 
 """
 
+from .run_agent import runner
+
 from rich.console import Console
 from rich.progress import track
 from rich.padding import Padding
@@ -82,7 +84,9 @@ def main(agent: str = "default") -> None:
     )
     console.print(Padding(description_text, (0, 0, 1, 0)))
     
-    for _ in track(range(8), description=f"Running {agent} "):
+    for _ in track(range(2), description=f"Running {agent} "):
         time.sleep(1)
+        
+    result = runner(agent)
 
-    console.print(Padding(f"[green]{agent}[/green] completed successfully!", (0, 0, 1, 0)))
+    console.print(Padding(f"[green]{agent}[/green] {result}", (0, 0, 1, 0)))
