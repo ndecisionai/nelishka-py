@@ -1,5 +1,5 @@
 from typing import Protocol
-from .types import AgentState
+from agentic.agent_types import AgentState
 
 
 class AgentCallable(Protocol):
