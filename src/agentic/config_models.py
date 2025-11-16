@@ -11,7 +11,7 @@ class ToolRef(BaseModel):
 
 class AgentConfig(BaseModel):
     name: str
-    version: str
+    version: float
     description: str
     max_steps: int
     logging_level: str
@@ -22,5 +22,5 @@ class AgentConfig(BaseModel):
 class ToolConfig(BaseModel):
     name: str
     type: str
-    version: str
+    version: float
     description: str

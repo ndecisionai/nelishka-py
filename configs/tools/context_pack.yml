@@ -1,8 +1,8 @@
 tool:
-  name: llm_context_pack
+  name: context_pack
   type: Tool
   version: 1.0
   description: >
-    LLM-based tool that synthesizes incoming data, market references, and
+    A tool that synthesizes incoming data, market references, and
     relevant context into a structured context package. Includes key insights,
     detected patterns, relationships, and source references for downstream agents.

@@ -11,11 +11,11 @@ agent:
   logging_level: DEBUG
 
   tools:
-    - name: llm_context_pack
+    - name: context_pack
       type: Tool
-      tool_ref: llm_context_pack
+      tool_ref: context_pack
       description: >
-        LLM-based tool that synthesizes incoming data, references, and market
+        A tool that synthesizes incoming data, references, and market
         information into a structured context package. Includes key insights,
         relationships, and source references for reporting, reasoning, or
         downstream agents.
@@ -23,5 +23,5 @@ agent:
   decision_logic: >
     The analyst agent first collects raw data and relevant references,
     optionally fetching market prices via the market_price tool. It then
-    invokes the llm_context_pack tool to generate a consolidated context
+    invokes the context_pack tool to generate a consolidated context
     package. Logging at DEBUG level tracks all intermediate steps and outputs.

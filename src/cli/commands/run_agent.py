@@ -1,20 +1,24 @@
+from typing import Any
+
 from agentic.agent_manager import AgentManager
 from agentic.types import AgentState
 
-manager = AgentManager()
+def runner(name: str) -> Any:
 
-agent = manager.get_agent("analyst")
+    manager = AgentManager()
 
-if agent is None:
-    raise RuntimeError("Agent not loaded!")
+    agent = manager.get_agent(name)
 
-state: AgentState = {
-    "data": {},
-    "references": {},
-    "messages": [],
-    "log": []
-}
+    if agent is None:
+        raise RuntimeError("Agent not loaded!")
 
-result = agent(state)
+    state: AgentState = {
+        "data": {"symbol": "AAPL"},
+        "references": {},
+        "messages": [],
+        "log": []
+    }
 
-print(result)
+    result = agent(state)
+    
+    return result
