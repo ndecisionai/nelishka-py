@@ -10,3 +10,7 @@ class AgentState(TypedDict, total=False):
     references: Dict[str, Any]
     context: Optional[Any]
     log: List[str]
+    result: int
+    documents: list[str]
+    tool_outputs: dict # type: ignore
+    plan: str

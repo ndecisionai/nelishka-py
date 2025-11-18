@@ -8,7 +8,7 @@ description: >
   and execution orchestration.
 
 nodes:
-  - name: load_data
+  - name: data_loader
     type: Agent
     role: DataLoader
     description: >
@@ -55,7 +55,7 @@ nodes:
       historical analysis, model retraining, and audit trails.
 
 edges:
-  - from: load_data
+  - from: data_loader
     to: analyst
     description: >
       Delivers normalized and cleaned data for analytical processing and
@@ -84,12 +84,6 @@ edges:
     description: >
       Sends the Trader high-potential opportunities scored for expected
       returns, guiding strategy execution based on opportunity analysis.
-
-  - from: analyst
-    to: feature_store
-    description: >
-      Stores extracted analytical features and insights for long-term
-      learning, benchmarking, and retraining of analytical models.
 
   - from: trader
     to: feature_store
