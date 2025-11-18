@@ -1,8 +1,8 @@
 agent:
-  name: load_data
+  name: data_loader
   version: 1.0
   description: >
-    The "load_data" agent ingests raw financial and market data from multiple
+    The "data_loader" agent ingests raw financial and market data from multiple
     sources including streams, APIs, and data lakes. It normalizes and cleans
     data for downstream agents.
 
