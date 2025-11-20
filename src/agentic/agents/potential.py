@@ -1,5 +1,4 @@
-from typing import Dict, TypedDict
-from agentic.agent_types import AgentState
+from typing import Dict, TypedDict, Any, List
 from agentic.config_models import AgentConfig
 from agentic.tool_protocol import ToolCallable
 from langchain.messages import AnyMessage, HumanMessage
@@ -8,13 +7,14 @@ import operator
 
 class PotentialState(TypedDict):
     messages: Annotated[list[AnyMessage], operator.add]
-    result: int
+    data: Dict[str, Any]
+    log: List[str]
 
 def potential_agent(
-    state: AgentState,
+    state: PotentialState,
     config: AgentConfig,
     tools: Dict[str, ToolCallable]
-) -> AgentState:
+) -> PotentialState:
     
     log = state.get("log")
     if log is None:
