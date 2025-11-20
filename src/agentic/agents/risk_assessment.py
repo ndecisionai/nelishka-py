@@ -1,5 +1,4 @@
-from typing import Dict, TypedDict
-from agentic.agent_types import AgentState
+from typing import Dict, TypedDict, Any, List
 from agentic.config_models import AgentConfig
 from agentic.tool_protocol import ToolCallable
 # from langchain.agents import Tool
@@ -10,13 +9,14 @@ import operator
 
 class RiskAssessmentState(TypedDict):
     messages: Annotated[list[AnyMessage], operator.add]
-    tool_outputs: dict # type: ignore
+    data: Dict[str, Any]
+    log: List[str]
 
 def risk_assessment_agent(
-    state: AgentState,
+    state: RiskAssessmentState,
     config: AgentConfig,
     tools: Dict[str, ToolCallable]
-) -> AgentState:
+) -> RiskAssessmentState:
     
     log = state.get("log")
     if log is None:

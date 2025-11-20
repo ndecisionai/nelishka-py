@@ -1,14 +1,14 @@
 from langgraph.graph import StateGraph, START, END
-from agentic.unified_state import UnifiedState
+from agentic.agent_types import AgentState
 from agentic.node_registry import AGENT_REGISTRY
 
-graph = StateGraph(UnifiedState)
+graph = StateGraph(AgentState)
 
 for name, agent_fn in AGENT_REGISTRY.items():
 	graph.add_node(name, agent_fn)
  
 	
-def should_discuss_more(state: UnifiedState):
+def should_discuss_more(state: AgentState):
 	content = state["messages"][-1].content.lower()
 	if "risk_assessment" in content:
 		return "risk_assessment"

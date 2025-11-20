@@ -1,22 +1,21 @@
-from typing import Dict, TypedDict
-from agentic.agent_types import AgentState
+from typing import Dict, TypedDict, Any, List
 from agentic.config_models import AgentConfig
 from agentic.tool_protocol import ToolCallable
 # from langchain.chat_models import ChatOpenAI
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage, AnyMessage # type: ignore
 from typing import Annotated
 import operator
-import random
 
 class TraderState(TypedDict):
     messages: Annotated[list[AnyMessage], operator.add]
-    result: str
+    data: Dict[str, Any]
+    log: List[str]
 
 def trader_agent(
-    state: AgentState,
+    state: TraderState,
     config: AgentConfig,
     tools: Dict[str, ToolCallable]
-) -> AgentState:
+) -> TraderState:
     
     log = state.get("log")
     if log is None:
