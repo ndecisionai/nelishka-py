@@ -1,8 +1,8 @@
 agent:
-  name: potential
+  name: potential_field_evaluator
   version: 1.0
   description: >
-    The "potential" agent identifies and scores trading opportunities based
+    The "potential_field_evaluator" agent identifies and scores trading opportunities based
     on risk-adjusted potential returns, trends, and sentiment analysis.
 
   max_steps: 10
