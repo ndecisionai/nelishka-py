@@ -52,7 +52,7 @@ class AgentManager:
         fn = getattr(module, f"{tool_name}_tool", None)
 
         if callable(fn):
-          self.tools[tool_name] = fn  # type: ignore
+          self.tools[tool_name] = fn
         else:
           print(f"[WARN] Tool function `{tool_name}_tool` not found in {module_path}")
 
