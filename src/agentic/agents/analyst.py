@@ -5,33 +5,29 @@ from langchain.messages import AnyMessage
 import operator
 
 class AnalystState(TypedDict):
-    messages: Annotated[list[AnyMessage], operator.add]
-    data: Dict[str, Any]
-    log: List[str]
+	messages: Annotated[list[AnyMessage], operator.add]
+	data: Dict[str, Any]
+	logs: List[str]
 
 
 def analyst_agent(
-    state: AnalystState,
-    config: AgentConfig,
-    tools: Dict[str, ToolCallable]
+	state: AnalystState,
+	config: AgentConfig,
+	tools: Dict[str, ToolCallable]
 ) -> AnalystState:
 
-    log = state.get("log")
-    if log is None:
-        log = state.setdefault("log", [])
-    log.append(f"Analyst executing: {config.description}")
+	state.get("logs").append(f"Analyst executing")
 
-    if "context_pack" in tools:
-        state["context"] = tools["context_pack"](
-            symbol=state.get("data.symbol", {}),
-        )
-    
-    data = state.get("data")
-    if data is None:
-        data = state.setdefault("data", {"initial_query": "", "retrieved_data": "", "analyst": [], "potential": [], "risk_assessment": []})
-        
-    data["analyst"].append("analyst did some analyse stuff")
-        
-    print(f"[ANALYST] Done")
+	if "context_pack" in tools:
+		state.get("data.analyst", []).append(
+			tools["context_pack"](
+				symbol=state.get("data.symbol", {}),
+				)
+			)
+	
+	state \
+  	.setdefault("data", {}) \
+    .setdefault("analyst", []) \
+    .append("analyst did some analyse stuff")
 
-    return state
+	return state
