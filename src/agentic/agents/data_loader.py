@@ -1,23 +1,23 @@
 from typing import Dict, TypedDict
-from agentic.agent_types import AgentState
 from agentic.config_models import AgentConfig
 from agentic.tool_protocol import ToolCallable
 # from langchain.vectorstores import FAISS
 # from langchain.embeddings import OpenAIEmbeddings
 # from langchain.schema import Document
 from langchain.messages import AnyMessage
-from typing import Annotated
+from typing import Annotated, Any, List
 import operator
 
 class DataLoaderState(TypedDict):
     messages: Annotated[list[AnyMessage], operator.add]
-    documents: list[str]
+    data: Dict[str, Any]
+    log: List[str]
 
 def data_loader_agent(
-    state: AgentState,
+    state: DataLoaderState,
     config: AgentConfig,
     tools: Dict[str, ToolCallable]
-) -> AgentState:
+) -> DataLoaderState:
     
     log = state.get("log")
     if log is None:

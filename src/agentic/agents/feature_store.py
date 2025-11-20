@@ -1,5 +1,4 @@
-from typing import Dict, TypedDict
-from agentic.agent_types import AgentState
+from typing import Dict, TypedDict, List, Any
 from agentic.config_models import AgentConfig
 from agentic.tool_protocol import ToolCallable
 # from langchain.chat_models import ChatOpenAI
@@ -9,13 +8,14 @@ import operator
 
 class FeatureStoreState(TypedDict):
     messages: Annotated[list[AnyMessage], operator.add]
-    plan: str
+    data: Dict[str, Any]
+    log: List[str]
 
 def feature_store_agent(
-    state: AgentState,
+    state: FeatureStoreState,
     config: AgentConfig,
     tools: Dict[str, ToolCallable]
-) -> AgentState:
+) -> FeatureStoreState:
     
     log = state.get("log")
     if log is None:
