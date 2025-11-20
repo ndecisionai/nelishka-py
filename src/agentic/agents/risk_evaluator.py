@@ -8,31 +8,27 @@ from typing import Annotated
 import operator
 
 class RiskEvaluatorState(TypedDict):
-    messages: Annotated[list[AnyMessage], operator.add]
-    data: Dict[str, Any]
-    log: List[str]
+	messages: Annotated[list[AnyMessage], operator.add]
+	data: Dict[str, Any]
+	logs: List[str]
 
 def risk_evaluator_agent(
-    state: RiskEvaluatorState,
-    config: AgentConfig,
-    tools: Dict[str, ToolCallable]
+	state: RiskEvaluatorState,
+	config: AgentConfig,
+	tools: Dict[str, ToolCallable]
 ) -> RiskEvaluatorState:
     
-    log = state.get("log")
-    if log is None:
-        log = state.setdefault("log", [])
-    log.append(f"Risk assessment executing: {config.description}")
-    
-    query = state["messages"][-1].content  # type: ignore
+	state.get("logs", []).append(f"Risk evaluator executing")
+	
+	# TODO - use query from older messages
+	# query = state["messages"][-1].content  # type: ignore
 
-    # search = DuckDuckGoSearchRun()
-    # result = search.run(query)
-    
-    data = state.get("data")
-    if data is None:
-        data = state.setdefault("data", {"initial_query": "", "retrieved_data": "", "analyst": [], "potential": [], "risk_assessment": []})
-        
-    data["risk_assessment"].append("risk assessment did some analization stuff")
+	# search = DuckDuckGoSearchRun()
+	# result = search.run(query)
+	
+	state \
+		.setdefault("data", {}) \
+		.setdefault("risk_assessment", []) \
+		.append("risk assessment did some analyses stuff")
 
-    print(f"[Risk] Assessment of some risks")  # {result[:100]}...
-    return state
+	return state

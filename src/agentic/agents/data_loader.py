@@ -9,35 +9,28 @@ from typing import Annotated, Any, List
 import operator
 
 class DataLoaderState(TypedDict):
-    messages: Annotated[list[AnyMessage], operator.add]
-    data: Dict[str, Any]
-    log: List[str]
+	messages: Annotated[list[AnyMessage], operator.add]
+	data: Dict[str, Any]
+	logs: List[str]
 
 def data_loader_agent(
-    state: DataLoaderState,
-    config: AgentConfig,
-    tools: Dict[str, ToolCallable]
+	state: DataLoaderState,
+	config: AgentConfig,
+	tools: Dict[str, ToolCallable]
 ) -> DataLoaderState:
     
-    log = state.get("log")
-    if log is None:
-        log = state.setdefault("log", [])
-    log.append(f"Data loader executing: {config.description}")
-    
-    query = state["messages"][-1].content
+	state.get("logs").append(f"Data loader executing")
+	
+	# query = state["messages"][-1].content
 
-    # vectorstore = FAISS.load_local("vectorstore_index", OpenAIEmbeddings())
-    # docs: list[Document] = vectorstore.similarity_search(query, k=3)
+	# vectorstore = FAISS.load_local("vectorstore_index", OpenAIEmbeddings())
+	# docs: list[Document] = vectorstore.similarity_search(query, k=3)
 
-    # state["documents"] = [doc.page_content for doc in docs]
-    # print(f"[DATA] Retrieved {len(docs)} documents.")
-    
-    data = state.get("data")
-    if data is None:
-        data = state.setdefault("data", {"initial_query": "", "retrieved_data": "", "analyst": [], "potential": [], "risk_assessment": []})
-        
-    data["initial_query"] = query
-    data["retrieved_data"] = "fetched some raw data from remote"
-    
-    print(f"[DATA] Loaded data")
-    return state
+	# state["documents"] = [doc.page_content for doc in docs]
+			
+	state \
+  	.setdefault("data", {}) \
+    .setdefault("data_loader", []) \
+    .append("fetched some raw data from remote")
+
+	return state
