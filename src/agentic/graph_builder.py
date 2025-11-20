@@ -10,19 +10,19 @@ for name, agent_fn in AGENT_REGISTRY.items():
 	
 def should_discuss_more(state: AgentState):
 	content = state["messages"][-1].content.lower()
-	if "risk_assessment" in content:
-		return "risk_assessment"
+	if "risk_evaluator" in content:
+		return "risk_evaluator"
 	return "trader"
 
 graph.add_edge(START, "data_loader")
 graph.add_edge("data_loader", "analyst")
-graph.add_edge("analyst", "potential")
+graph.add_edge("analyst", "potential_field_evaluator")
 graph.add_conditional_edges(
-  "potential", 
+  "potential_field_evaluator", 
   should_discuss_more, 
-  ["risk_assessment", "trader"]
+  ["risk_evaluator", "trader"]
 )
-graph.add_edge("risk_assessment", "potential")
+graph.add_edge("risk_evaluator", "potential_field_evaluator")
 graph.add_edge("trader", "feature_store")
 graph.add_edge("feature_store", END)
 

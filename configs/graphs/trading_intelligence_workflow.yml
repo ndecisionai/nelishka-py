@@ -23,15 +23,15 @@ nodes:
       Utilizes advanced analytical tools to derive insights and forecasts. Outputs
       structured intelligence for further evaluation.
 
-  - name: risk_assessment
+  - name: risk_evaluator
     type: Agent
-    role: RiskAssessor
+    role: RiskEvaluator
     description: >
       Evaluates potential market and operational risks using the Analyst’s insights.
       Computes risk scores and confidence metrics to guide decision-making. Interfaces
       with potential and trader agents to optimize safety and profitability.
 
-  - name: potential
+  - name: potential_field_evaluator
     type: Agent
     role: OpportunityEvaluator
     description: >
@@ -62,24 +62,24 @@ edges:
       sentiment or trend detection.
 
   - from: analyst
-    to: risk_assessment
+    to: risk_evaluator
     description: >
       Sends analytical insights and forecasts to the RiskAssessor for
       probability and exposure evaluation.
 
   - from: analyst
-    to: potential
+    to: potential_field_evaluator
     description: >
       Sends structured insights, trend analysis, and detected patterns to the
       OpportunityEvaluator to help identify and score potential trading opportunities.
 
-  - from: risk_assessment
+  - from: risk_evaluator
     to: trader
     description: >
       Provides the Trader with evaluated risk metrics and recommended
       exposure limits, ensuring trades align with risk tolerance.
 
-  - from: potential
+  - from: potential_field_evaluator
     to: trader
     description: >
       Sends the Trader high-potential opportunities scored for expected

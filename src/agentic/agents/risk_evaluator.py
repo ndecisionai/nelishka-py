@@ -7,16 +7,16 @@ from langchain.messages import AnyMessage
 from typing import Annotated
 import operator
 
-class RiskAssessmentState(TypedDict):
+class RiskEvaluatorState(TypedDict):
     messages: Annotated[list[AnyMessage], operator.add]
     data: Dict[str, Any]
     log: List[str]
 
-def risk_assessment_agent(
-    state: RiskAssessmentState,
+def risk_evaluator_agent(
+    state: RiskEvaluatorState,
     config: AgentConfig,
     tools: Dict[str, ToolCallable]
-) -> RiskAssessmentState:
+) -> RiskEvaluatorState:
     
     log = state.get("log")
     if log is None:
