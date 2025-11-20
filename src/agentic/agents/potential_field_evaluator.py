@@ -10,7 +10,7 @@ class PotentialState(TypedDict):
     data: Dict[str, Any]
     log: List[str]
 
-def potential_agent(
+def potential_field_evaluator_agent(
     state: PotentialState,
     config: AgentConfig,
     tools: Dict[str, ToolCallable]
@@ -30,7 +30,7 @@ def potential_agent(
     data["potential"].append("potential did some analization stuff")
     
     if len(data["risk_assessment"]) < 2:
-        state["messages"].append(HumanMessage(content="it's better to assess some risks using risk_assessment"))
+        state["messages"].append(HumanMessage(content="it's better to assess some risks using risk_evaluator"))
     else:
         state["messages"].append(HumanMessage(content="lets move forward to trader agent to see the final result"))
         

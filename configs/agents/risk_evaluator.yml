@@ -1,8 +1,8 @@
 agent:
-  name: risk_assessment
+  name: risk_evaluator
   version: 1.0
   description: >
-    The "risk_assessment" agent evaluates potential market and operational risks
+    The "risk_evaluator" agent evaluates potential market and operational risks
     using analytical insights. It produces risk scores, confidence metrics,
     and exposure recommendations.
 
