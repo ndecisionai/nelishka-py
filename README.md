@@ -27,6 +27,16 @@ src/
 tests/           # Unit tests
 ```
 
+## Installation
+
+Clone the repository and install in editable mode:
+
+```bash
+git clone https://github.com/ndecisionai/nelishka-py.git
+cd nelishka-py
+pip install -e .
+```
+
 ## CLI Usage
 
 ```bash
@@ -40,3 +50,7 @@ Run unit and integration tests:
 ```bash
 pytest tests/
 ```
+
+## Contributing
+
+**All contributions are welcome — feel free to open issues, suggest improvements, or submit pull requests!**
